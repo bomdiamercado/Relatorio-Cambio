@@ -1,0 +1,55 @@
+name: Gerar Relatório de Câmbio
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install anthropic
+
+      - name: Gerar HTML
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python gerar.py
+
+      - name: Commit e push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "Nada mudou, nada a commitar."
+          else
+            git commit -m "Relatorio de Cambio - atualizacao automatica"
+            git push
+          fi
+
+      - name: Apagar corpo da issue e fechar
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '(conteúdo removido automaticamente)',
+              state: 'closed'
+            })
