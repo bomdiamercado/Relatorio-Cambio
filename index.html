@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relatório de Câmbio — 18/09/2026</title>
+  <meta name="description" content="Dólar cai 0,23%, a R$ 5,1393, após máxima em R$ 5,1768; BC leva dois leilões de linha ao mercado nesta sexta.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph — é daqui que o Teams monta o card com o ícone -->
+  <meta property="og:title" content="Relatório de Câmbio — 18/09/2026">
+  <meta property="og:description" content="Dólar cai 0,23%, a R$ 5,1393, após máxima em R$ 5,1768; BC leva dois leilões de linha ao mercado nesta sexta.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Relatório de Câmbio Petrobras">
+  <meta property="og:url" content="https://bomdiamercado.github.io/Relatorio-Cambio/">
+  <meta property="og:image" content="https://bomdiamercado.github.io/Relatorio-Cambio/preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --night-bg:    #0F1419;
+      --night-card:  #1A2332;
+      --night-header:#0D0E13;
+      --blue:        #4A7BA7;
+      --blue-light:  #5A8BB8;
+      --paper:       #E9E6DE;
+      --amber:       #D4A574;
+      --text:        #E9E6DE;
+      --muted:       #9BA5AD;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Carlito', Calibri, sans-serif;
+      background: var(--night-bg) !important;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    html { background: var(--night-bg); }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--night-header);
+      color: #fff;
+      padding: 18px 24px 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid rgba(74,123,167,0.2);
+    }
+    .logo-marca { flex-shrink: 0; }
+    .logo-texto h1 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .logo-texto .data {
+      font-size: 0.82rem;
+      opacity: 0.7;
+      margin-top: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── MANCHETE ── */
+    .manchete {
+      background: var(--night-card);
+      color: #fff;
+      padding: 20px 24px 18px;
+      border-bottom: 1px solid rgba(74,123,167,0.15);
+    }
+    .manchete h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .manchete p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      opacity: 0.85;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* ── PAINEL COTAÇÕES ── */
+    .painel {
+      background: var(--night-card);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid rgba(74,123,167,0.15);
+    }
+    .cotacao {
+      padding: 12px 14px;
+      border-right: 1px solid rgba(74,123,167,0.1);
+      color: #fff;
+    }
+    .cotacao:last-child { border-right: none; }
+    .cotacao .label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.55;
+      margin-bottom: 3px;
+      color: var(--muted);
+    }
+    .cotacao .valor {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .cotacao .var {
+      font-size: 0.72rem;
+      margin-top: 2px;
+      opacity: 0.8;
+    }
+    .var.pos { color: #6fcf97; }
+    .var.neg { color: #ff6b6b; }
+    .var.neu { color: rgba(255,255,255,0.4); }
+
+    /* ── CORPO ── */
+    .corpo {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    /* ── AGENDA ── */
+    .agenda {
+      margin: 24px 0 8px;
+      border: 1px solid rgba(74,123,167,0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--night-card);
+    }
+    .agenda-titulo {
+      background: var(--night-header);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(74,123,167,0.1);
+    }
+    .agenda-lista { list-style: none; }
+    .agenda-lista li {
+      display: grid;
+      grid-template-columns: 28px 52px 1fr;
+      gap: 8px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      border-bottom: 1px solid rgba(74,123,167,0.1);
+      align-items: start;
+      line-height: 1.4;
+    }
+    .agenda-lista li:last-child { border-bottom: none; }
+    .agenda-lista li:nth-child(even) { background: rgba(74,123,167,0.05); }
+    .agenda-lista .bandeira {
+      width: 22px;
+      height: 15px;
+      display: block;
+      margin-top: 3px;
+      border: 1px solid rgba(74,123,167,0.3);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .agenda-lista .bandeira svg { display: block; width: 100%; height: 100%; }
+    .agenda-lista .hora {
+      color: var(--muted);
+      font-size: 0.78rem;
+      padding-top: 1px;
+    }
+    .agenda-lista .desc strong {
+      display: block;
+      font-weight: 700;
+      color: var(--blue-light);
+    }
+    .agenda-lista .desc span {
+      color: var(--muted);
+      font-size: 0.80rem;
+    }
+
+    /* ── SEÇÕES ── */
+    .secao { margin-top: 24px; }
+    .secao h3 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      border-bottom: 2px solid var(--amber);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+    .secao p {
+      font-size: 0.915rem;
+      line-height: 1.65;
+      text-align: justify;
+      hyphens: auto;
+      color: var(--text);
+    }
+
+    /* ── NÚMEROS ── */
+    .num { font-weight: 700; color: var(--blue-light); }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--night-header);
+      color: rgba(255,255,255,0.35);
+      font-size: 0.72rem;
+      text-align: center;
+      padding: 14px 20px;
+      margin-top: 32px;
+      letter-spacing: 0.03em;
+      border-top: 1px solid rgba(74,123,167,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <!-- Marca do câmbio: anel âmbar com cifrão e setas de troca -->
+  <svg class="logo-marca" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="24" cy="24" r="13" stroke="#D4A574" stroke-width="2.2" fill="none"/>
+    <text x="24" y="30" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#E9E6DE" text-anchor="middle">$</text>
+    <path d="M2 20h7M9 20l-2.5-2.5M46 28h-7M39 28l2.5 2.5" stroke="#E9E6DE" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <div class="logo-texto">
+    <h1>Relatório de Câmbio</h1>
+    <div class="data">Sexta-feira, 18 de setembro de 2026</div>
+  </div>
+</header>
+
+<div class="manchete">
+  <h2>DÓLAR IGNORA O RUÍDO E BC VOLTA A ATUAR</h2>
+  <p>O dólar fechou abaixo de R$ 5,15 mesmo depois do susto inicial com o reajuste do Bolsa Família, em mais um pregão em que o real se descolou da queda do petróleo e manteve o foco no trade eleitoral. A piora do dólar casado levou o Banco Central a marcar dois leilões de linha para esta sexta-feira, de até US$ 1,0 bilhão no total. No exterior, o Banco do Japão elevou os juros ao maior nível em 31 anos e o DXY fechou praticamente de lado.</p>
+</div>
+
+<div class="painel">
+  <div class="cotacao">
+    <div class="label">Dólar</div>
+    <div class="valor"><span class="num">5,1393</span></div>
+    <div class="var neg">-0,23%</div>
+  </div>
+  <div class="cotacao">
+    <div class="label">DXY Index</div>
+    <div class="valor"><span class="num">100,248</span></div>
+    <div class="var neg">-0,01%</div>
+  </div>
+  <div class="cotacao">
+    <div class="label">CDS Brasil</div>
+    <div class="valor"><span class="num">—</span></div>
+    <div class="var neu">—</div>
+  </div>
+  <div class="cotacao">
+    <div class="label">Brent</div>
+    <div class="valor"><span class="num">US$ 104,82</span></div>
+    <div class="var neg">-0,95%</div>
+  </div>
+</div>
+
+<div class="painel">
+  <div class="cotacao">
+    <div class="label">Ptax venda</div>
+    <div class="valor"><span class="num">—</span></div>
+    <div class="var neu">—</div>
+  </div>
+  <div class="cotacao">
+    <div class="label">EUR/USD</div>
+    <div class="valor"><span class="num">1,1482</span></div>
+    <div class="var pos">+0,11%</div>
+  </div>
+  <div class="cotacao">
+    <div class="label">USD/CNH</div>
+    <div class="valor"><span class="num">—</span></div>
+    <div class="var neu">—</div>
+  </div>
+  <div class="cotacao">
+    <div class="label">Treasury 10a</div>
+    <div class="valor"><span class="num">4,929%</span></div>
+    <div class="var neg">-8,6 pb</div>
+  </div>
+</div>
+
+<div class="corpo">
+
+  <!-- AGENDA — o gerar.py reescreve o conteúdo deste <ul> -->
+  <div class="agenda">
+    <div class="agenda-titulo">Agenda</div>
+    <ul class="agenda-lista">
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#fff"/><circle cx="14" cy="10" r="5.5" fill="#BC002D"/></svg></span>
+        <span class="hora">madrugada</span>
+        <span class="desc">
+          <strong>BoJ elevou o juro a 1,25%</strong>
+          <span>Segunda alta em três meses; atenção aos comentários de Kazuo Ueda</span>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="6.7" fill="#000"/><rect width="28" height="6.7" y="6.7" fill="#DD0000"/><rect width="28" height="6.6" y="13.4" fill="#FFCE00"/></svg></span>
+        <span class="hora">madrugada</span>
+        <span class="desc">
+          <strong>PPI de agosto</strong>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#012169"/><path d="M0 0 28 20M28 0 0 20" stroke="#fff" stroke-width="4"/><path d="M0 0 28 20M28 0 0 20" stroke="#C8102E" stroke-width="2"/><path d="M14 0v20M0 10h28" stroke="#fff" stroke-width="6"/><path d="M14 0v20M0 10h28" stroke="#C8102E" stroke-width="3.5"/></svg></span>
+        <span class="hora">madrugada</span>
+        <span class="desc">
+          <strong>Vendas no varejo de agosto</strong>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#009B3A"/><path d="M14 2.5 25.5 10 14 17.5 2.5 10Z" fill="#FEDF00"/><circle cx="14" cy="10" r="4.2" fill="#002776"/></svg></span>
+        <span class="hora">8h00</span>
+        <span class="desc">
+          <strong>FGV: segunda prévia do IGP-M de setembro</strong>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#fff"/><g fill="#B22234"><rect width="28" height="1.55" y="0"/><rect width="28" height="1.55" y="3.1"/><rect width="28" height="1.55" y="6.2"/><rect width="28" height="1.55" y="9.3"/><rect width="28" height="1.55" y="12.4"/><rect width="28" height="1.55" y="15.5"/><rect width="28" height="1.55" y="18.4"/></g><rect width="12" height="10.8" fill="#3C3B6E"/></svg></span>
+        <span class="hora">10h15</span>
+        <span class="desc">
+          <strong>Produção industrial de agosto</strong>
+          <span>Previsão de alta de 0,3%, após 0,2% em julho</span>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#009B3A"/><path d="M14 2.5 25.5 10 14 17.5 2.5 10Z" fill="#FEDF00"/><circle cx="14" cy="10" r="4.2" fill="#002776"/></svg></span>
+        <span class="hora">10h30</span>
+        <span class="desc">
+          <strong>BC: dois leilões simultâneos de linha</strong>
+          <span>Venda com compromisso de recompra, até US$ 1,0 bilhão no total</span>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#fff"/><g fill="#B22234"><rect width="28" height="1.55" y="0"/><rect width="28" height="1.55" y="3.1"/><rect width="28" height="1.55" y="6.2"/><rect width="28" height="1.55" y="9.3"/><rect width="28" height="1.55" y="12.4"/><rect width="28" height="1.55" y="15.5"/><rect width="28" height="1.55" y="18.4"/></g><rect width="12" height="10.8" fill="#3C3B6E"/></svg></span>
+        <span class="hora">10h30</span>
+        <span class="desc">
+          <strong>Fala de Michelle Bowman (Fed)</strong>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#fff"/><g fill="#B22234"><rect width="28" height="1.55" y="0"/><rect width="28" height="1.55" y="3.1"/><rect width="28" height="1.55" y="6.2"/><rect width="28" height="1.55" y="9.3"/><rect width="28" height="1.55" y="12.4"/><rect width="28" height="1.55" y="15.5"/><rect width="28" height="1.55" y="18.4"/></g><rect width="12" height="10.8" fill="#3C3B6E"/></svg></span>
+        <span class="hora">12h45</span>
+        <span class="desc">
+          <strong>Fala de Jeff Schmid (Fed)</strong>
+        </span>
+      </li>
+      <li>
+        <span class="bandeira"><svg viewBox="0 0 28 20"><rect width="28" height="20" fill="#009B3A"/><path d="M14 2.5 25.5 10 14 17.5 2.5 10Z" fill="#FEDF00"/><circle cx="14" cy="10" r="4.2" fill="#002776"/></svg></span>
+        <span class="hora">18h00</span>
+        <span class="desc">
+          <strong>Dario Durigan no Fórum CEO Brasil</strong>
+          <span>Boletim Macrofiscal de setembro foi adiado para terça-feira, dia 22</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SEÇÕES — só câmbio -->
+  <div class="secao">
+    <h3>Dólar</h3>
+    <p>O dólar fechou em baixa de <span class="num">0,23%</span>, a <span class="num">R$ 5,1393</span>, depois de ter subido mais cedo até <span class="num">R$ 5,1768</span> na máxima intradia, que coincidiu com o anúncio do reajuste de <span class="num">15%</span> do Bolsa Família. O susto inicial durou pouco: à tarde o humor virou no câmbio, no DI e na bolsa, com o investidor filtrando o risco fiscal e olhando para a chance de vitória da oposição em outubro. O real não acompanhou a queda do petróleo e manteve o foco no trade eleitoral, sem se abalar com a perspectiva de um diferencial de juros mais estreito diante de um Fed eventualmente mais conservador e de um Copom mais flexível. Para o economista-chefe da XP, Caio Megale, o câmbio tem se comportado como uma rocha, oscilando entre pouco abaixo de <span class="num">R$ 5,10</span> e <span class="num">R$ 5,20</span> sem movimentos bruscos, o que destoa do que se esperaria em ano eleitoral.</p>
+  </div>
+
+  <div class="secao">
+    <h3>Moedas no exterior</h3>
+    <p>O índice DXY fechou no zero a zero, com baixa de <span class="num">0,01%</span>, a <span class="num">100,248</span> pontos. O euro subiu <span class="num">0,11%</span>, a <span class="num">US$ 1,1482</span>, e o iene avançou <span class="num">0,17%</span>, a <span class="num">155,97</span> por dólar, horas antes de o Banco do Japão elevar a taxa em <span class="num">25 pbs</span>, de <span class="num">1%</span> para <span class="num">1,25%</span>, na segunda alta em apenas três meses. A decisão era amplamente esperada e a dúvida agora é se marca uma aceleração do ciclo ou uma antecipação pontual; estrategistas do Citi, Wells Fargo e ING veem risco de enfraquecimento da moeda japonesa caso Ueda não sinalize novos aumentos em ritmo mais rápido, com espaço para <span class="num">157/159</span> por dólar. Mais de <span class="num">90%</span> dos analistas consultados pela Bloomberg esperam outra alta do juro japonês até janeiro. A libra caiu <span class="num">0,19%</span>, a <span class="num">US$ 1,3359</span>, depois de o Banco da Inglaterra manter o juro em <span class="num">3,75%</span> e desacelerar o aperto quantitativo.</p>
+  </div>
+
+  <div class="secao">
+    <h3>Fluxo e Banco Central</h3>
+    <p>O dólar casado, termômetro da liquidez do mercado de câmbio, piorou ontem, e a diferença em pontos entre o dólar futuro e o à vista levou o Banco Central a anunciar leilão de linha para esta sexta-feira. São duas operações simultâneas às <span class="num">10h30</span>, de venda de dólares com compromisso de recompra, com até <span class="num">US$ 1,0 bilhão</span> a ser distribuído entre elas a critério da autoridade. Setembro costuma trazer saída de capital por conta do fim de trimestre e, segundo operadores ouvidos pelo Valor, a cautela pré-eleições pode ter ampliado esse montante, exigindo mais intervenções. Só neste mês o BC já realizou duas vezes o chamado casadão, a venda de dólares no mercado à vista conjugada com a compra no futuro via swap reverso, de <span class="num">US$ 1 bilhão</span> cada.</p>
+  </div>
+
+</div>
+
+<footer>
+  Relatório de Câmbio · Petrobras · 18/09/2026 · uso interno
+</footer>
+
+</body>
+</html>
