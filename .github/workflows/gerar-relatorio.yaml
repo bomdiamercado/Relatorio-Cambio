@@ -1,4 +1,4 @@
-name: Gerar Relatório de Câmbio
+name: Gerar Relatório
 
 on:
   issues:
@@ -38,7 +38,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "Nada mudou, nada a commitar."
           else
-            git commit -m "Relatorio de Cambio - atualizacao automatica"
+            git commit -m "Boa Noite Mercado - atualizacao automatica"
             git push
           fi
 
